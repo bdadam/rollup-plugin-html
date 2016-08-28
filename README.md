@@ -16,12 +16,12 @@ import { rollup } from 'rollup';
 import buble from 'rollup-plugin-html';
 
 rollup({
-	  entry: 'main.js',
-    plugins: [
-		    html({
-			      include: '**/*.html'
-		    })
-	  ]
+	entry: 'main.js',
+	plugins: [
+		html({
+			include: '**/*.html'
+		})
+	]
 }).then(...)
 ```
 
