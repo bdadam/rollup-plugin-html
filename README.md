@@ -70,3 +70,7 @@ rollup({
 ## License
 
 MIT
+
+## Credits
+
+Thanks for Bogdan Chadkin (@TrySound) for his [rollup-plugin-string](https://github.com/TrySound/rollup-plugin-string) rollup plugin which I used as the base for this plugin.
