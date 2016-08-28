@@ -2,6 +2,12 @@ language: node_js
 node_js:
   - '6'
 
+install:
+  - npm install
+
+script:
+  - npm run build
+
 deploy:
   provider: npm
   email: "me@bdadam.com"
