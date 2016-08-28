@@ -3,6 +3,6 @@ node_js:
   - '6'
 
 deploy:
-  - provider: npm
-  - email: me@bdadam.com
-  - api_key: $NPM_API_KEY
+  provider: npm
+  email: "me@bdadam.com"
+  api_key: $NPM_API_KEY
