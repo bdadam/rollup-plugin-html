@@ -2,6 +2,10 @@ language: node_js
 node_js:
   - '6'
 
+cache:
+  directories:
+    - node_modules
+
 install:
   - npm install -g rollup
   - npm install
@@ -13,3 +17,6 @@ deploy:
   provider: npm
   email: "me@bdadam.com"
   api_key: $NPM_API_KEY
+  on:
+    branch: master
+  skip_cleanup: true
