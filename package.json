@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-html",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "HTML import plugin for rollup",
   "main": "dist/rollup-plugin-html.js",
   "jsnext:main": "dist/rollup-plugin-html.mjs",
