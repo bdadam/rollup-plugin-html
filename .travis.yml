@@ -3,6 +3,7 @@ node_js:
   - '6'
 
 install:
+  - npm install -g rollup
   - npm install
 
 script:
