@@ -51,19 +51,19 @@ The options which are given to [html-minifier](https://github.com/kangax/html-mi
 E.g.:
 ```JavaScript
 rollup({
-	  entry: 'main.js',
-    plugins: [
-		    html({
-			      include: '**/*.html',
-						htmlMinifierOptions: {
-							  minifyJS: true,
-								collapseWhitespace: true,
-								collapseBooleanAttributes: true,
-								conservativeCollapse: true,
-								minifyJS: true
-						}
-		    })
-	  ]
+	entry: 'main.js',
+	plugins: [
+		html({
+			include: '**/*.html',
+			htmlMinifierOptions: {
+				minifyJS: true,
+				collapseWhitespace: true,
+				collapseBooleanAttributes: true,
+				conservativeCollapse: true,
+				minifyJS: true
+			}
+		})
+	]
 }).then(...)
 ```
 
