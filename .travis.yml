@@ -7,7 +7,6 @@ cache:
     - node_modules
 
 install:
-  - npm install -g rollup
   - npm install
 
 script:
@@ -18,5 +17,5 @@ deploy:
   email: "me@bdadam.com"
   api_key: $NPM_API_KEY
   on:
-    branch: master
+    tags: true
   skip_cleanup: true
