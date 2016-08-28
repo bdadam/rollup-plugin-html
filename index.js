@@ -3,7 +3,7 @@ import { minify } from 'html-minifier';
 
 export default function string(opts = {}) {
 	if (!opts.include) {
-		throw Error('include option should be specified');
+		opts.include = '**/*.html'
 	}
 
 	const filter = createFilter(opts.include, opts.exclude);
@@ -18,8 +18,6 @@ export default function string(opts = {}) {
 					code: `export default ${JSON.stringify(minify(code, opts.htmlMinifierOptions))};`,
 					map: { mappings: '' }
 				};
-
-				// console.log(x);
 
 				return x;
 			}
