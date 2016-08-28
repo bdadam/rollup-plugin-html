@@ -4,4 +4,5 @@ node_js:
 
 deploy:
   - provider: npm
+  - email: me@bdadam.com
   - api_key: $NPM_API_KEY
