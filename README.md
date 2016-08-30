@@ -13,7 +13,7 @@ npm install --save-dev rollup-plugin-html
 
 ```js
 import { rollup } from 'rollup';
-import buble from 'rollup-plugin-html';
+import html from 'rollup-plugin-html';
 
 rollup({
 	entry: 'main.js',
@@ -56,7 +56,6 @@ rollup({
 		html({
 			include: '**/*.html',
 			htmlMinifierOptions: {
-				minifyJS: true,
 				collapseWhitespace: true,
 				collapseBooleanAttributes: true,
 				conservativeCollapse: true,
