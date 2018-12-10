@@ -4,17 +4,17 @@ var pkg = require('./package.json');
 var external = Object.keys(pkg.dependencies).concat('path');
 
 export default {
-	entry: 'index.js',
+	input: 'index.js',
 	plugins: [buble()],
 	external: external,
-	targets: [
+	output: [
 		{
 			format: 'cjs',
-			dest: pkg['main']
+			file: pkg['main']
 		},
 		{
-			format: 'es6',
-			dest: pkg['jsnext:main']
+			format: 'es',
+			file: pkg['jsnext:main']
 		}
 	]
 };

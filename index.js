@@ -3,7 +3,7 @@ import { minify } from 'html-minifier';
 
 export default function string(opts = {}) {
 	if (!opts.include) {
-		opts.include = '**/*.html'
+		opts.include = '**/*.html';
 	}
 
 	const filter = createFilter(opts.include, opts.exclude);

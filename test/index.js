@@ -11,25 +11,36 @@ function makeBundle(options, stringOptions) {
 
 describe('rollup-plugin-html', () => {
 	it('should import html from file as string', () => {
-		return makeBundle({ entry: 'fixtures/basic.js' }, { include: '**/*.html' }).then(bundle => {
-			const { code } = bundle.generate({ format: 'iife', moduleName: 'tpl' });
-			new Function('assert', code)(assert);
+		return makeBundle({ input: 'fixtures/basic.js' }, { include: '**/*.html' }).then(bundle => {
+			return bundle.generate({ format: 'iife', moduleName: 'tpl' });
+		}).then(({ code }) => {
+			return new Function('assert', code)(assert);
 		});
 	});
 
 	it('should output empty sourcemap', () => {
-		return makeBundle({ entry: 'fixtures/basic.js' }, { include: '**/*.html' }).then(bundle => {
-			const { code, map } = bundle.generate({ sourceMap: true });
+		return makeBundle({ input: 'fixtures/basic.js' }, { include: '**/*.html' }).then(bundle => {
+			return bundle.generate({ format: 'es', sourcemap: true });
+		}).then(({ code, map }) => {
 			assert.ok(code);
 			assert.ok(map);
 		});
 	});
 
 	it('should import minified html when html-minifier options are present', () => {
-		return makeBundle({ entry: 'fixtures/basic.js' }, { include: '**/*.html', htmlMinifierOptions: { collapseWhitespace: true, collapseBooleanAttributes: true, conservativeCollapse: true, minifyJS: true } }).then(bundle => {
-			const { code, map } = bundle.generate();
+		const htmlMinifierOptions = {
+			collapseWhitespace: true,
+			collapseBooleanAttributes: true,
+			conservativeCollapse: true,
+			minifyJS: true
+		};
+		const htmlOptions = { include: '**/*.html', htmlMinifierOptions };
+
+		return makeBundle({ input: 'fixtures/basic.js' }, htmlOptions).then(bundle => {
+			return bundle.generate({ format: 'iife' });
+		}).then(({ code, map }) => {
 			assert.ok(code);
-			assert.notEqual(code.indexOf(`var tpl = "<h1>This is the Title</h1> <section class=\\"section\\"> <article class=\\"article\\">Article 1</article> <article class=\\"article\\">Article 2</article> </section> <script>!function(){console.log(\\"init\\")}()</script> ";`), -1);
+			assert.notEqual(code.indexOf(`var tpl = "<h1>This is the Title</h1> <section class=\\"section\\"> <article class=\\"article\\">Article 1</article> <article class=\\"article\\">Article 2</article> </section> <script>console.log(\\"init\\")</script> ";`), -1);
 		});
 	});
 });
